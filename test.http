@@ -1,0 +1,8 @@
+### Recuperar información del pokemon ditto
+GET http://localhost:1234/Blog
+
+### Para crear un Pokemon
+POST http://localhost:1234/add
+Content-Type: text/plain
+
+Hola servidor, esto es texto plano
