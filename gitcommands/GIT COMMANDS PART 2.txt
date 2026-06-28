@@ -1,0 +1,22 @@
+GIT COMMANDS PART 2
+
+git push -u origin main
+git switch -c nombre-rama
+git Branch
+git Branch name-branch
+git Branch -d
+git Branch -m mod-dev mod-text
+git merge mod-dev 
+git reset --hard 38903
+git log --oneline --all --graph
+
+.gitignore #comentarios
+file.txt
+*.txt
+!readme.txt
+*).txt
+fotos/
+
+git config --global alias.log-mejorado ""
+git reset --hard 23931
+git reflog

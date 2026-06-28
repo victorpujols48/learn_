@@ -11,3 +11,5 @@ console.log('Leyendo el segundo archivo...')
 fs.readFile('./archivo2.txt','utf-8' , (err, text) => {
   console.log('segundo texto:', text)
 })
+
+

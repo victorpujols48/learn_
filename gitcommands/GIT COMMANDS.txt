@@ -1,0 +1,38 @@
+GIT COMMANDS
+
+git config --global user.name ""
+git config --global user.email ""
+git config --global --list // local 
+git config --global core.editor "code --wait"
+git config --global color.ui true 
+git config --global core.autocrlf true // input 
+
+git init
+ls -a
+git add file.txt file2.txt
+git status
+git status -s
+git rm --cached file.txt
+git commit -m "agregando los primeros archivos del repo" -a
+git commit 
+git commit -a
+git restore file.txt
+git checkout file.txt
+git reset --hard
+git mv file.txt file2.txt
+
+git show file.txt
+git diff --staged
+git diff 233ksk oell33
+git config --global core.abbrev 10
+git diff --word-diff 344ds edf32
+git log 
+git log --oneline
+git log --abbrev-commit --abbrev=9
+git diff --name-only jwkhdj kqwjslom
+
+git commit --amend
+git reset --soft dfgwr
+git reset --soft head-2
+git remote add origin https://github.com/usuario/proyecto.git
+git push -u origin main
