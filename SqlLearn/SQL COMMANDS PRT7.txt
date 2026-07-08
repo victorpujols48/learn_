@@ -1,0 +1,46 @@
+SQL COMMANDS PRT7
+
+INSERT INTO tabla VALUES
+(valor1a, valor2a, ...),
+(valor1b, valor2b, ...);
+
+-----
+
+INSERT INTO tabla (columna1, columna2, ...)
+VALUES (valor1, valor2, ...);
+----
+
+INSERT INTO videogames (title, developer, year, playtime_hours)
+VALUES ('Elden Ring', 'FromSoftware', 2022, 150);
+--
+
+INSERT OR IGNORE INTO videogames (id, title, developer, year, playtime_hours)
+VALUES (1, 'Otro juego', 'Otro dev', 2020, 50);
+-- No hace nada porque ya existe id = 1
+---
+
+INSERT OR REPLACE INTO videogames (id, title, developer, year, playtime_hours)
+VALUES (1, 'Zelda Remaster', 'Nintendo', 2024, 30);
+-- Sustituye el registro con id = 1
+--
+
+INSERT INTO videogames (id, title, developer, year, playtime_hours)
+VALUES (15, 'Celeste', 'Matt Makes Games', 2018, 12),
+    (16, 'Stardew Valley', 'ConcernedApe', 2016, 200);
+--
+
+UPDATE---
+
+UPDATE tabla
+SET columna1 = valor1, columna2 = valor2
+WHERE condición;
+--
+
+UPDATE videogames
+SET playtime_hours = playtime_hours + 10
+WHERE developer = 'Nintendo';
+--
+
+UPDATE videogames
+SET developer = 'CD Projekt', year = 2016
+WHERE title = 'The Witcher 3';

@@ -1,0 +1,40 @@
+SQL COMMANDS PRT8
+
+-- Primero comprueba qué filas se van a ver afectadas
+SELECT * FROM videogames WHERE developer = 'Nintendo';
+
+-- Si el resultado es el esperado, ejecuta el UPDATE
+UPDATE videogames
+SET playtime_hours = playtime_hours + 10
+WHERE developer = 'Nintendo';
+--
+
+UPDATE videogames SET playtime_hours = 10000 WHERE id = 5;
+--
+
+UPDATE videogames SET developer = 'CD Projekt' WHERE title = 'The Witcher 3';
+--
+
+DELETE --
+
+DELETE FROM tabla
+WHERE condición;
+--
+
+DELETE FROM videogames WHERE year < 1990;
+DELETE FROM videogames WHERE developer = 'Valve';
+DELETE FROM videogames WHERE playtime_hours > 1000;
+---
+
+-- Primero revisa qué vas a eliminar
+SELECT * FROM videogames WHERE year < 1990;
+
+-- Si estás conforme, ejecuta el DELETE
+DELETE FROM videogames WHERE year < 1990;
+---
+
+-- Elimina todas las filas, pero la tabla sigue existiendo
+DELETE FROM videogames;
+
+-- Elimina la tabla entera (estructura + datos)
+DROP TABLE videogames;
