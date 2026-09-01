@@ -4,7 +4,7 @@ SQL COMMANDS PART 5
 
 SELECT COUNT(*) AS total FROM videogames;
 --
-SELECT COUNT(*) AS total_filas, COUNT(developer) AS con_developer
+SELECT COUNT(*) AS total_filas, COUNT(developer) AS con_developer -- ignora los nulls en columns
 FROM videogames;
 --
 SELECT

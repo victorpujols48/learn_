@@ -1,0 +1,44 @@
+SQL PART 12
+
+CREATE INDEX idx_videogames_year ON videogames(year);
+--
+
+CREATE UNIQUE INDEX idx_videogames_title ON videogames(title);
+--
+DROP INDEX nombre_indice;
+--
+DROP INDEX IF EXISTS nombre_indice;
+---
+
+SELECT title, year
+FROM videogames
+WHERE year = (SELECT MAX(year) FROM videogames);
+--
+
+SELECT title, developer
+FROM videogames
+WHERE developer IN (
+  SELECT developer
+  FROM videogames
+  GROUP BY developer
+  HAVING COUNT(*) > 1
+);
+--
+
+SELECT title,
+       playtime_hours,
+       (SELECT MAX(playtime_hours) FROM videogames) AS max_horas
+FROM videogames;
+--
+
+SELECT title, developer
+FROM videogames v
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM videogames v2
+  WHERE v2.developer = v.developer
+    AND v2.id != v.id
+);
+--
+
+SELECT title, developer FROM videogames WHERE developer IN (SELECT developer FROM videogames GROUP BY developer HAVING COUNT(*) > 1);

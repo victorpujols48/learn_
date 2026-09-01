@@ -1,0 +1,64 @@
+SQL PART 13
+
+
+SELECT columnas FROM tabla1
+UNION
+SELECT columnas FROM tabla2;
+--
+
+SELECT developer FROM videogames WHERE year < 2000
+UNION
+SELECT developer FROM videogames WHERE playtime_hours > 50;
+
+--
+SELECT developer FROM videogames WHERE year < 2000
+UNION ALL
+SELECT developer FROM videogames WHERE playtime_hours > 50;
+--
+
+SELECT developer FROM videogames WHERE year < 2015
+INTERSECT
+SELECT developer FROM videogames WHERE playtime_hours > 50;
+--
+
+SELECT developer FROM videogames WHERE year < 2015
+EXCEPT
+SELECT developer FROM videogames WHERE playtime_hours > 50;
+--
+
+SELECT title, year FROM videogames WHERE year < 2000
+UNION
+SELECT title, year FROM videogames WHERE year > 2015
+ORDER BY year;
+
+-- Database Diference
+
+-- SQLite
+CREATE TABLE users (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT
+);
+
+-- PostgreSQL
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  name TEXT
+);
+-- O en PostgreSQL moderno:
+CREATE TABLE users (
+  id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  name TEXT
+);
+
+-- MySQL / MariaDB
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255)
+);
+--
+
+SELECT e.name, COUNT(f.id) AS total_features FROM engines e
+LEFT JOIN features f ON e.id = f.engine_id GROUP BY e.name ORDER BY total_features DESC;
+--
+
+SELECT name || ' (' || type || ')' AS motor_info FROM engines;

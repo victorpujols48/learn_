@@ -1,0 +1,93 @@
+SQL PART 14
+
+WITH nombre_cte AS (
+  SELECT ...
+)
+SELECT * FROM nombre_cte;
+---
+
+WITH conteo AS (
+  SELECT developer, COUNT(*) AS total
+  FROM videogames
+  GROUP BY developer
+)
+SELECT developer, total
+FROM conteo
+WHERE total > 1;
+---
+
+WITH
+juegos_largos AS (
+  SELECT title, developer, playtime_hours
+  FROM videogames
+  WHERE playtime_hours > 50
+),
+conteo_devs AS (
+  SELECT developer, COUNT(*) AS total
+  FROM videogames
+  GROUP BY developer
+)
+SELECT j.title, j.playtime_hours, c.total
+FROM juegos_largos j
+JOIN conteo_devs c ON j.developer = c.developer;
+--
+
+WITH clasicos AS (SELECT title, year FROM videogames WHERE year < 2000) SELECT * FROM clasicos;
+--
+
+WITH stats_dev AS (SELECT developer, COUNT(*) AS total FROM videogames GROUP BY developer) SELECT * FROM stats_dev WHERE total > 1;
+--
+
+WITH juegos_por_anio AS (SELECT year, COUNT(*) AS total FROM videogames GROUP BY year)
+
+ SELECT * FROM juegos_por_anio WHERE total > 1 ORDER BY total DESC;
+--
+
+BEGIN TRANSACTION;
+
+-- Operaciones que forman la transacción
+UPDATE cuentas SET saldo = saldo - 100 WHERE id = 1;
+UPDATE cuentas SET saldo = saldo + 100 WHERE id = 2;
+
+COMMIT;
+--
+
+BEGIN TRANSACTION;
+INSERT INTO pedidos (cliente_id, total) VALUES (5, 59.99);
+UPDATE clientes SET total_compras = total_compras + 59.99 WHERE id = 5;
+COMMIT;
+
+--
+BEGIN TRANSACTION;
+DELETE FROM videogames WHERE developer = 'Valve';
+-- ¡Ups! No queríamos borrar todos los juegos de Valve
+ROLLBACK;
+-- La tabla queda como estaba antes del DELETE
+
+-- Esto se confirma automáticamente
+DELETE FROM videogames WHERE id = 1;
+-- El registro ya se borró permanentemente, no hay ROLLBACK posible
+
+BEGIN TRANSACTION;
+UPDATE cuentas SET saldo = saldo - 200 WHERE id = 1;
+UPDATE cuentas SET saldo = saldo + 200 WHERE id = 2;
+INSERT INTO movimientos (cuenta_id, tipo, cantidad) VALUES (1, 'retiro', 200);
+INSERT INTO movimientos (cuenta_id, tipo, cantidad) VALUES (2, 'ingreso', 200);
+COMMIT;
+--
+
+BEGIN TRANSACTION;
+ INSERT INTO cuentas VALUES (4, 'Carlos Ruiz', 1000);
+ INSERT INTO movimientos (cuenta_id, tipo, cantidad) VALUES (4, 'ingreso', 1000);
+  COMMIT;
+
+--
+
+BEGIN TRANSACTION;
+DELETE FROM movimientos WHERE tipo = 'ingreso';
+ROLLBACK;
+
+SELECT * FROM movimientos;
+--
+
+SELECT c.titular, c.saldo, SUM(m.cantidad) AS total_movimientos FROM cuentas c LEFT JOIN movimientos m ON c.id = m.cuenta_id GROUP BY c.id ORDER BY c.id;

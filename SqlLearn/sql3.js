@@ -71,9 +71,11 @@ SELECT UPPER(title) AS titulo_mayusculas FROM videogames;
 ---
 SELECT title, 2025 - year AS antiguedad FROM videogames;
 ----
-SELECT title, playtime_hours, CASE WHEN playtime_hours < 20 THEN 'Casual'
- WHEN playtime_hours <= 60 THEN 'Normal'
- ELSE 'Hardcore' END AS dedicacion FROM videogames;
+SELECT title, playtime_hours, CASE
+WHEN playtime_hours < 20 THEN 'Casual'
+WHEN playtime_hours <= 60 THEN 'Normal'
+ELSE 'Hardcore'
+END AS dedicacion FROM videogames;
 ----
 SELECT MIN(year) AS mas_antiguo, MAX(year) AS mas_reciente FROM videogames;
 */

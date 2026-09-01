@@ -42,5 +42,5 @@ WHERE developer = 'Nintendo';
 --
 
 UPDATE videogames
-SET developer = 'CD Projekt', year = 2016
+SET developer = 'CD Projekt', year = 2016  -- modificar varias columnas a la vez
 WHERE title = 'The Witcher 3';
