@@ -73,9 +73,8 @@ for (const book of books) {
 db.close()
 */
 
-//npm install better-sqlite3 - command para instalar sqlite en tu projecto nodejs 22.1 posterior
+//npm install better-sqlite3 - command para instalar sqlite en tu projecto nodejs 22.1 anterior
 import Database from "better-sqlite3"
 
 const db = new Database("biblioteca.db") // o new Database(":memory:")
 db.prepare("SELECT * FROM books").all()
-

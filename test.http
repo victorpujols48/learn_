@@ -1,8 +1,13 @@
 ### Recuperar información del pokemon ditto
-GET http://localhost:1234/Blog
+GET http://localhost:1234/users/2
 
 ### Para crear un Pokemon
-POST http://localhost:1234/add
-Content-Type: text/plain
+POST http://localhost:1234/users/send
+Content-Type: application/json
 
-Hola servidor, esto es texto plano
+{
+  "name": "Xavi Esteban",
+  "email": "Xavi@example.com",
+  "age": 27,
+  "active": true
+}

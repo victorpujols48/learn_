@@ -10,9 +10,9 @@ const processRequest = (req, res) => {
     case 'GET':
       switch (url) {
         case '/pokemon/ditto':
-
           res.setHeader('Content-Type', 'application/json; charset=utf-8')
           return res.end(JSON.stringify(dittoJSON))
+          
         default:
           res.statusCode = 404
           res.setHeader('Content-Type', 'text/html; charset=utf-8')
@@ -21,7 +21,7 @@ const processRequest = (req, res) => {
 
     case 'POST':
       switch (url) {
-        case '/pokemon': {
+        case '/send': {
           let body = ''
 
           // escuchar el evento data

@@ -76,7 +76,7 @@ console.log(recientes)
 const porAutor = db.prepare(
   "SELECT * FROM books WHERE author = :author"
 )
-
+ 
 porAutor.all({ author: "Orwell" })
 //
 

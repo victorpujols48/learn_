@@ -2,7 +2,7 @@ const http = require("node:http");
 //const fs = require("node:fs");
 //const path = require("node:path");
 //const fs = require("node:fs/promises");
-
+const PORT = 1234
 // commonJS -> modulos clásicos de node
 
 const processRequest = (req, res) => {
@@ -22,7 +22,7 @@ const processRequest = (req, res) => {
         default:
           res.statusCode = 404;
           res.setHeader("Content-Type", "text/html; charset=utf-8");
-          return res.end("<h1>404</h1>");
+          return res.end("<h1>404 error</h1>");
       }
 
     case "POST":
@@ -50,8 +50,8 @@ const processRequest = (req, res) => {
 
         default:
           res.statusCode = 404;
-          res.setHeader("Content-Type", "text/plain; charset=utf-8");
-          return res.end("404 Not Found");
+          res.setHeader("Content-Type", "text/html; charset=utf-8");
+          return res.end("<h1>404 error</h1>");
       }
 };
 
@@ -59,6 +59,23 @@ const processRequest = (req, res) => {
 
 const server = http.createServer(processRequest);
 
-server.listen(1234, () => {
-  console.log("server listening on port http://localhost:1234");
+server.listen(PORT, () => {
+  console.log(`server listening on port http://localhost:${PORT}`);
 });
+
+
+
+//node --wacht "./"
+
+/*
+"sql": "SELECT * FROM users",
+  "title": "The Godfather",
+  "year": 1975,
+  "director": "Francis Ford Coppola",
+  "duration": 175,
+  "poster": "https://img.fruugo.com/product/4/49/14441494_max.jpg",
+  "genre": [
+    "Crime",
+    "Drama"
+  ]
+*/
